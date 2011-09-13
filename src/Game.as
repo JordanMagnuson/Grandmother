@@ -1,5 +1,8 @@
 package  
 {
+	import net.flashpunk.Entity;
+	import net.flashpunk.graphics.Backdrop;
+	import net.flashpunk.graphics.Image;
 	import net.flashpunk.World;
 	
 	/**
@@ -11,9 +14,13 @@ package
 		
 		public function Game() 
 		{
-			trace('game started');
 		}
 		
+		override public function begin():void
+		{
+			add (new Entity(0, 0, new Backdrop(Assets.HEADSTONE)));
+			add(new Dust);
+		}
 	}
 
 }
