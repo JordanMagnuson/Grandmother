@@ -31,7 +31,8 @@ package
 		override public function update():void 
 		{
 			//when user click on dust
-			if (Input.mouseDown) {
+			if (Input.mouseDown) 
+			{
 				if (collidePoint(x, y, world.mouseX, world.mouseY))
 				{			
 					//we make holes ! ))
@@ -53,7 +54,7 @@ package
 		{
 			trace('clean');
 			//
-			// i choosed circle holes. You may prefer other form.
+			// I chose circle holes. You may prefer other form.
 			//
 			var blow:Image = Image.createCircle(bRad, 0xFFFFFF, 0.1); //create circle image
 				blow.blend = BlendMode.ERASE; //we will cut holes :)

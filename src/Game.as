@@ -20,6 +20,7 @@ package
 		{
 			add (new Entity(0, 0, new Backdrop(Assets.HEADSTONE)));
 			add(new Dust);
+			add(new Vase(482, 339))
 		}
 	}
 
