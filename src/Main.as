@@ -14,7 +14,7 @@ package
 			// Console for debugging
 			FP.console.enable();		
 			
-			FP.world = new Approach;
+			FP.world = new Game;
 			
 			//Mouse.hide();
 		}

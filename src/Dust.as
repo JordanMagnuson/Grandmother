@@ -16,30 +16,22 @@ package
 	 */
 	public class Dust extends Entity
 	{
-		public var canvas:Canvas = new Canvas(FP.width, FP.height);
+		public var canvas:Canvas;
 		public var image:Image = new Image(Assets.DUST);
 		public var cleanRadius:Number = 20; //radius of our circle clean
 		
-		public function Dust() 
+		public function Dust(x:Number = 0, y:Number = 0) 
 		{
+			canvas = new Canvas(image.width, image.height);
+			super(x, y, canvas);
+			type = 'dust';
 			canvas.drawGraphic(0, 0, image);
-			width = FP.width;
-			height = FP.height;
-			graphic = canvas;
+			width = image.width;
+			height = image.height;
 		}
 		
 		override public function update():void 
 		{
-			//when user click on dust
-			if (Input.mouseDown) 
-			{
-				if (collidePoint(x, y, world.mouseX, world.mouseY))
-				{			
-					//we make holes ! ))
-					clean(FP.world.mouseX, FP.world.mouseY, cleanRadius);
-				}
-			}
-			
 			super.update();
 		}		
 		
@@ -48,21 +40,16 @@ package
 		 * let's make holes in our image
 		 * 
 		 * @param bx,by - coordinates
-		 * @param bRad - blow radius
 		 */
-		private function clean(bx:Number,by:Number,bRad:Number):void
+		public function clean(bx:Number = 0, by:Number = 0):void
 		{
-			trace('clean');
-			//
-			// I chose circle holes. You may prefer other form.
-			//
-			var blow:Image = Image.createCircle(bRad, 0xFFFFFF, 0.1); //create circle image
-				blow.blend = BlendMode.ERASE; //we will cut holes :)
+			//trace('clean');
+			//var blow:Image = Image.createCircle(bRad, 0xFFFFFF, 0.1); //create circle image
+			var blow:Image = new Image(Assets.SPONGE_MASK);
+			blow.alpha = Global.sponge.saturation;
+			blow.blend = BlendMode.ERASE; //we will cut holes :)
 				
-				canvas.drawGraphic(bx - blow.width / 2, by - blow.height / 2, blow);  //add hole to image
-				//canvas.update();
-				//render();
-				//updateMask(); //redraw pixelMask of level
+			canvas.drawGraphic(bx - blow.width / 2 - x, by - blow.height / 2 - y, blow);  //add hole to image
 		}			
 		
 	}

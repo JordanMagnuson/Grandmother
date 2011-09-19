@@ -3,6 +3,7 @@ package
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.utils.Input;
+	import net.flashpunk.FP;
 	
 	/**
 	 * ...
@@ -15,6 +16,7 @@ package
 		public function Vase(x:Number, y:Number) 
 		{
 			super(x, y);
+			type = 'vase';
 			width = 80;
 			height = 140;
 		}
@@ -24,9 +26,11 @@ package
 			if (!filled && Input.mousePressed && collidePoint(x, y, world.mouseX, world.mouseY))
 			{
 				filled = true;
-				graphic = new Image(Assets.FLOWERS);
-				y = 0;
-				x = 457;
+				FP.world.add(Global.flowers = new Flowers(457, 0, true, 2));
+				//graphic = new Image(Assets.FLOWERS);
+				//y = 0;
+				//x = 457;
+				Global.hasSponge = false;
 			};
 			super.update();
 		}
