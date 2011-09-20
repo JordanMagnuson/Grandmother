@@ -13,6 +13,7 @@ package
 	public class MouseController extends Entity
 	{
 		public var handIcon:Image = new Image(Assets.HAND_ICON);
+		public var cursorIcon:Image = new Image(Assets.CURSOR_ICON);
 		
 		public function MouseController() 
 		{
@@ -20,6 +21,11 @@ package
 			type = 'mouse_controller';
 			layer = -1000;	
 		}
+		
+		override public function added():void
+		{
+			Mouse.hide();
+		}			
 		
 		override public function update():void
 		{
@@ -34,20 +40,20 @@ package
 				Global.sponge.visible = false;
 				graphic = handIcon;
 				visible = true;				
-				Mouse.hide();
+				//Mouse.hide();
 			}
 			else if (Global.hasSponge)
 			{
 				Global.sponge.visible = true;
 				visible = false;
-				Mouse.hide();
+				//Mouse.hide();
 			}
 			else if (overlapBucket)
 			{
 				Global.sponge.visible = false;
 				graphic = handIcon;
 				visible = true;
-				Mouse.hide();
+				//Mouse.hide();
 				
 				if (Input.mousePressed && !Global.hasSponge)
 				{
@@ -57,8 +63,9 @@ package
 			else
 			{
 				Global.sponge.visible = false;
-				visible = false;
-				Mouse.show();
+				graphic = cursorIcon;
+				visible = true;				
+				//Mouse.hide();
 			}
 			
 			super.update();

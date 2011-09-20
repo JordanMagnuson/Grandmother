@@ -12,9 +12,9 @@ package
 			//FP.screen.color = Colors.BLACK;
 			
 			// Console for debugging
-			FP.console.enable();		
+			//FP.console.enable();		
 			
-			FP.world = new Game;
+			FP.world = new Approach;
 			
 			//Mouse.hide();
 		}

@@ -1,6 +1,8 @@
 package  
 {
+	import net.flashpunk.Sfx;
 	import net.flashpunk.World;
+	import flash.ui.Mouse;
 	
 	/**
 	 * ...
@@ -8,7 +10,6 @@ package
 	 */
 	public class Approach extends World
 	{
-		
 		public function Approach() 
 		{
 			
@@ -16,7 +17,9 @@ package
 		
 		override public function begin():void
 		{
-			add(new PhotoController);
+			add(Global.photoController = new PhotoController);
+			Global.SndAmbient.loop();
+			add(new MouseControllerApproach);
 		}
 		
 	}

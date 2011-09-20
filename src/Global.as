@@ -1,5 +1,6 @@
 package  
 {
+	import net.flashpunk.Sfx;
 	/**
 	 * ...
 	 * @author Jordan Magnuson
@@ -15,6 +16,8 @@ package
 		public static var hasSponge:Boolean = false;
 		
 		// Entities
+		public static var SndAmbient:Sfx = new Sfx(Assets.SND_AMBIENT_01);
+		public static var photoController:PhotoController;
 		public static var dust:Dust;
 		public static var sponge:Sponge;
 		public static var bucket:Bucket;

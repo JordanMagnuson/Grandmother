@@ -21,7 +21,9 @@ package
 		/**
 		 * Icons
 		 */
+		[Embed(source = '../assets/cursor_icon.png')] public static const CURSOR_ICON:Class;
 		[Embed(source = '../assets/hand_icon.png')] public static const HAND_ICON:Class;
+		[Embed(source = '../assets/feet_icon.png')] public static const FEET_ICON:Class;
 		
 		/**
 		 * Photos
@@ -47,8 +49,11 @@ package
 		 * Sounds
 		 */
 		
+		// Ambient
+		[Embed(source='../assets/sounds/sounds.swf', symbol='snd_17383_ambient_01')] public static const SND_AMBIENT_01:Class;
+		 
 		// Walking path
-		[Embed(source='../assets/sounds/23448_door_squeak.mp3')] public static const SND_DOOR_SQUEAK:Class;
+		[Embed(source = '../assets/sounds/23448_door_squeak.mp3')] public static const SND_DOOR_SQUEAK:Class;
 		[Embed(source = '../assets/sounds/55690_walking_01.mp3')] public static const SND_WALKING_01:Class;
 		[Embed(source = '../assets/sounds/55690_walking_02.mp3')] public static const SND_WALKING_02:Class;
 		[Embed(source = '../assets/sounds/55690_walking_03.mp3')] public static const SND_WALKING_03:Class;
