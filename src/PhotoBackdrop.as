@@ -33,8 +33,17 @@ package
 		
 		override public function added():void
 		{
-			backdrop.alpha = 0;
-			fadeIn();
+			if (fadeInDuration > 0)
+			{
+				backdrop.alpha = 0;
+				fadeIn();
+			}
+			else
+			{
+				backdrop.alpha = 1;
+				fadeTween = new ColorTween;
+				fadeTween.alpha = 1;
+			}
 		}		
 		
 		override public function update():void
@@ -45,6 +54,7 @@ package
 		
 		public function fadeIn():void
 		{
+			trace('fade in');
 			if (sound) sound.play();
 			fadeTween = new ColorTween(fadeInCallback);
 			addTween(fadeTween);		
@@ -58,9 +68,16 @@ package
 		
 		public function fadeOut():void
 		{
-			fadeTween = new ColorTween(destroy);
-			addTween(fadeTween);		
-			fadeTween.tween(fadeOutDuration, Colors.WHITE, Colors.WHITE, backdrop.alpha, 0);				
+			if (fadeOutDuration > 0)
+			{
+				fadeTween = new ColorTween(destroy);
+				addTween(fadeTween);		
+				fadeTween.tween(fadeOutDuration, Colors.WHITE, Colors.WHITE, backdrop.alpha, 0);		
+			}
+			else
+			{
+				destroy();
+			}
 		}		
 		
 		public function destroy():void

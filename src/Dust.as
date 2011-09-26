@@ -1,8 +1,10 @@
 package  
 {
+	import flash.geom.ColorTransform;
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Canvas;
 	import net.flashpunk.graphics.Image;
+	import net.flashpunk.graphics.Stamp;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.FP;
 	import flash.display.BlendMode;
@@ -16,41 +18,41 @@ package
 	 */
 	public class Dust extends Entity
 	{
-		public var canvas:Canvas;
-		public var image:Image = new Image(Assets.DUST);
-		public var cleanRadius:Number = 20; //radius of our circle clean
+		public var whiteboard:Whiteboard = new Whiteboard(Assets.DUST, Assets.SPONGE_MASK);
+		public var cleaned:Boolean = false;
 		
 		public function Dust(x:Number = 0, y:Number = 0) 
 		{
-			canvas = new Canvas(image.width, image.height);
-			super(x, y, canvas);
+			super(x, y, whiteboard);
 			type = 'dust';
-			canvas.drawGraphic(0, 0, image);
-			width = image.width;
-			height = image.height;
+			width = whiteboard.width;
+			height = whiteboard.height;
+		}	
+		
+		override public function added():void
+		{
+			FP.alarm(1, checkCleaned, 1);
 		}
 		
-		override public function update():void 
+		public function clean(px:Number = 0, py:Number = 0):void
 		{
-			super.update();
-		}		
-		
-		/**
-		 * @method clean
-		 * let's make holes in our image
-		 * 
-		 * @param bx,by - coordinates
-		 */
-		public function clean(bx:Number = 0, by:Number = 0):void
-		{
+			whiteboard.erase(px - x, py - y, Global.sponge.saturation);
+			//whiteboard.erase(px - x, py - y, 1);
 			//trace('clean');
 			//var blow:Image = Image.createCircle(bRad, 0xFFFFFF, 0.1); //create circle image
-			var blow:Image = new Image(Assets.SPONGE_MASK);
-			blow.alpha = Global.sponge.saturation;
-			blow.blend = BlendMode.ERASE; //we will cut holes :)
-				
-			canvas.drawGraphic(bx - blow.width / 2 - x, by - blow.height / 2 - y, blow);  //add hole to image
+			//var blow:Image = new Image(Assets.SPONGE_MASK);
+			//blow.alpha = Global.sponge.saturation;
+			//blow.blend = BlendMode.ERASE; //we will cut holes :)
+				//
+			//canvas.drawGraphic(bx - blow.width / 2 - x, by - blow.height / 2 - y, blow);  //add hole to image
 		}			
+		
+		public function checkCleaned():void
+		{
+			if (whiteboard.checkOpaquePixels(0.40) < 150)
+				cleaned = true;
+			trace('dust check cleaned: ' + cleaned);
+		}
 		
 	}
 

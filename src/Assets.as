@@ -24,10 +24,13 @@ package
 		[Embed(source = '../assets/cursor_icon.png')] public static const CURSOR_ICON:Class;
 		[Embed(source = '../assets/hand_icon.png')] public static const HAND_ICON:Class;
 		[Embed(source = '../assets/feet_icon.png')] public static const FEET_ICON:Class;
+		[Embed(source = '../assets/magnifying_glass_icon.png')] public static const MAGNIFYING_GLASS_ICON:Class;
 		
 		/**
 		 * Photos
 		 */
+		
+		 // Approach
 		[Embed(source = '../assets/photo01.jpg')] public static const PHOTO_01:Class;
 		[Embed(source = '../assets/photo02.jpg')] public static const PHOTO_02:Class;
 		[Embed(source = '../assets/photo03.jpg')] public static const PHOTO_03:Class;
@@ -44,6 +47,14 @@ package
 		[Embed(source = '../assets/photo14.jpg')] public static const PHOTO_14:Class;
 		[Embed(source = '../assets/photo15.jpg')] public static const PHOTO_15:Class;
 		[Embed(source = '../assets/photo16.jpg')] public static const PHOTO_16:Class;
+		
+		// Leaving
+		[Embed(source = '../assets/leaving04.jpg')] public static const LEAVING_04:Class;
+		[Embed(source = '../assets/leaving12.jpg')] public static const LEAVING_12:Class;
+		[Embed(source = '../assets/leaving13.jpg')] public static const LEAVING_13:Class;
+		[Embed(source = '../assets/leaving15.jpg')] public static const LEAVING_15:Class;
+		
+		
 		
 		/**
 		 * Sounds

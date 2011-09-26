@@ -4,6 +4,7 @@ package
 	import net.flashpunk.graphics.Image;
 	import flash.ui.Mouse;
 	import net.flashpunk.FP;
+	import net.flashpunk.tweens.misc.ColorTween;
 	import net.flashpunk.utils.Input;
 	
 	/**
@@ -14,6 +15,9 @@ package
 	{
 		public var handIcon:Image = new Image(Assets.HAND_ICON);
 		public var cursorIcon:Image = new Image(Assets.CURSOR_ICON);
+		public var lastPressCounter:Number = 0;
+		
+		public var alphaTween:ColorTween;
 		
 		public function MouseController() 
 		{
@@ -29,6 +33,17 @@ package
 		
 		override public function update():void
 		{
+			
+			if (alphaTween)
+				(graphic as Image).alpha = alphaTween.alpha;
+			
+			if (Input.mouseDown)
+				lastPressCounter = 0;
+			else
+				lastPressCounter += FP.elapsed;
+				
+			trace('last mouse press: ' + lastPressCounter);
+			
 			x = FP.world.mouseX;
 			y = FP.world.mouseY;
 
@@ -70,6 +85,18 @@ package
 			
 			super.update();
 		}		
+		
+		public function fadeOut(duration:Number):void
+		{
+			addTween(alphaTween = new ColorTween(destroy));
+			alphaTween.tween(duration, Colors.WHITE, Colors.WHITE, 1, 0);
+		}
+		
+		public function destroy():void
+		{
+			FP.world.remove(this);
+		}
+		
 	}
 
 }

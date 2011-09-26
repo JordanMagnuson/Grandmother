@@ -13,6 +13,7 @@ package
 	public class MouseControllerApproach extends Entity
 	{
 		public var feetIcon:Image = new Image(Assets.FEET_ICON);
+		public var magnifyingIcon:Image = new Image(Assets.MAGNIFYING_GLASS_ICON);
 		
 		public function MouseControllerApproach() 
 		{
@@ -33,7 +34,10 @@ package
 
 			if (Global.photoController.currentPhoto.fadeInComplete)
 			{
-				graphic = feetIcon;
+				if (Global.photoController.currentIndex == 15)
+					graphic = magnifyingIcon;
+				else 
+					graphic = feetIcon;
 				visible = true;					
 			}
 			else

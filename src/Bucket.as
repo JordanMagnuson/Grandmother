@@ -54,6 +54,12 @@ package
 			trace('bucket motion complete');
 		}
 		
+		public function drop():void
+		{
+			sndEnter.play();
+			motionTween.setMotion(x, y, x, FP.height + 20, 3, Ease.quadIn);
+		}
+		
 	}
 
 }
