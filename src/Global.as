@@ -12,8 +12,8 @@ package
 		public static const LONG_ENDING:Boolean = true;
 		
 		// Constants
-		public static const PHOTO_FADE_IN_DURATION:Number = 3;
-		public static const PHOTO_FADE_OUT_DURATION:Number = 3; 
+		public static const PHOTO_FADE_IN_DURATION:Number = 1;		// 3
+		public static const PHOTO_FADE_OUT_DURATION:Number = 3; 	//3
 		public static const MIN_SPONGE_SATURATION:Number = 0.4;
 		public static const WAIT_TO_DROP_BUCKET:Number = 3;
 		public static const WAIT_TO_FADE:Number = 10;

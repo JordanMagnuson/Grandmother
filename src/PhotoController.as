@@ -12,6 +12,7 @@ package
 	{
 		public var photoArray:Array;
 		public var soundArray:Array;
+		public var clickMaskArray:Array;
 		public var currentIndex:int = 0;	
 		public var finished:Boolean = false;
 		public var loop:Boolean = false;
@@ -19,14 +20,14 @@ package
 		public var currentPhoto:PhotoBackdrop;
 		public var lastPhoto:PhotoBackdrop;		
 		
-		public function PhotoController(photoArray:Array, soundArray:Array = null) 
+		public function PhotoController(photoArray:Array, soundArray:Array = null, clickMaskArray:Array = null) 
 		{
 			this.photoArray = photoArray;
 			this.soundArray = soundArray;
+			this.clickMaskArray = clickMaskArray;
 			//photoArray = new Array(Assets.PHOTO_09, Assets.PHOTO_10, Assets.PHOTO_11, Assets.PHOTO_12, Assets.PHOTO_13, Assets.PHOTO_14, Assets.PHOTO_15, Assets.PHOTO_16);
 			//soundArray = new Array(null, Assets.SND_TILES_01, Assets.SND_TILES_02, Assets.SND_TILES_03, Assets.SND_TILES_04, Assets.SND_WALKING_01, Assets.SND_WALKING_06, Assets.SND_TILES_05);
-			
-			currentPhoto = new PhotoBackdrop(photoArray[currentIndex], soundArray[currentIndex], Global.PHOTO_FADE_IN_DURATION, Global.PHOTO_FADE_OUT_DURATION);
+			currentPhoto = new PhotoBackdrop(photoArray[currentIndex], soundArray[currentIndex], Global.PHOTO_FADE_IN_DURATION, Global.PHOTO_FADE_OUT_DURATION, clickMaskArray[currentIndex]);
 		}
 		
 		override public function added():void
@@ -42,11 +43,6 @@ package
 				FP.world = new Game;
 			}
 			
-			
-			if (Input.mousePressed && currentPhoto.fadeInComplete)
-			{
-				nextPhoto();
-			}
 			super.update();
 		}
 		
@@ -61,7 +57,7 @@ package
 			{
 				lastPhoto = currentPhoto;
 				lastPhoto.fadeOut();
-				FP.world.add(currentPhoto = new PhotoBackdrop(photoArray[currentIndex], soundArray[currentIndex], Global.PHOTO_FADE_IN_DURATION, Global.PHOTO_FADE_OUT_DURATION));
+				FP.world.add(currentPhoto = new PhotoBackdrop(photoArray[currentIndex], soundArray[currentIndex], Global.PHOTO_FADE_IN_DURATION, Global.PHOTO_FADE_OUT_DURATION, clickMaskArray[currentIndex]));
 			}
 			else
 			{
@@ -71,7 +67,7 @@ package
 				{
 					lastPhoto = currentPhoto;
 					lastPhoto.fadeOut();
-					FP.world.add(currentPhoto = new PhotoBackdrop(photoArray[currentIndex], soundArray[currentIndex], Global.PHOTO_FADE_IN_DURATION, Global.PHOTO_FADE_OUT_DURATION));			
+					FP.world.add(currentPhoto = new PhotoBackdrop(photoArray[currentIndex], soundArray[currentIndex], Global.PHOTO_FADE_IN_DURATION, Global.PHOTO_FADE_OUT_DURATION, clickMaskArray[currentIndex]));			
 				}				
 			}
 			currentIndex++;

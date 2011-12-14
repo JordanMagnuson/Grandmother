@@ -49,8 +49,10 @@ package
 		
 		public function checkCleaned():void
 		{
-			if (whiteboard.checkOpaquePixels(0.40) < 150)
+			if (whiteboard.checkOpaquePixels(0.50) < 150)
+			{
 				cleaned = true;
+			}
 			trace('dust check cleaned: ' + cleaned);
 		}
 		

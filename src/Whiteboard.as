@@ -55,7 +55,7 @@ package
 		public function checkOpaquePixels(alphaThreshold:Number = 0.25):uint
 		{
 			var tester:BitmapData = new BitmapData(source.width, source.height);
-			var pt:Point = new Point(0, 0);
+			var pt:Point = FP.zero;
 			var rect:Rectangle = source.rect;
 			var threshold:uint =  uint('0x' + int(alphaThreshold * 100) + '000000'); 
 			var color:uint = 0x80FF0000;		// irrelevent, as we aren't replacing any pixels.

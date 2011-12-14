@@ -4,6 +4,7 @@ package
 	import net.flashpunk.graphics.Image;
 	import flash.ui.Mouse;
 	import net.flashpunk.FP;
+	import net.flashpunk.masks.Pixelmask;
 	import net.flashpunk.utils.Input;
 	
 	/**
@@ -14,12 +15,14 @@ package
 	{
 		public var feetIcon:Image = new Image(Assets.FEET_ICON);
 		public var magnifyingIcon:Image = new Image(Assets.MAGNIFYING_GLASS_ICON);
+		public var cursorIcon:Image = new Image(Assets.CURSOR_ICON);
 		
 		public function MouseControllerApproach() 
 		{
 			feetIcon.centerOO();
 			type = 'mouse_controller';
 			layer = -1000;	
+			setHitbox(1, 1, 0, 0);
 		}
 		
 		override public function added():void
@@ -31,19 +34,38 @@ package
 		{
 			x = FP.world.mouseX;
 			y = FP.world.mouseY;
+			
+			//var overlapClickMask:ClickMask = collide('click_mask', x, y) as ClickMask;
+			if (Global.photoController.currentPhoto.clickMask) 
+			{
+				var overlapClickMask:ClickMask = collideWith(Global.photoController.currentPhoto.clickMask, x, y) as ClickMask;
+			}
 
 			if (Global.photoController.currentPhoto.fadeInComplete)
 			{
-				if (Global.photoController.currentIndex == 15)
-					graphic = magnifyingIcon;
+				if (overlapClickMask) 
+				{
+					if (Global.photoController.currentIndex == 15)
+						graphic = magnifyingIcon;
+					else 
+						graphic = feetIcon;
+				}
 				else 
-					graphic = feetIcon;
+				{
+					graphic = cursorIcon;	
+				}
 				visible = true;					
 			}
 			else
 			{
 				visible = false;
 			}	
+			
+			// Click - advance
+			if (overlapClickMask && Input.mousePressed && Global.photoController.currentPhoto.fadeInComplete)
+			{
+				Global.photoController.nextPhoto();
+			}			
 			
 			super.update();
 		}		

@@ -13,6 +13,7 @@ package
 	public class PhotoBackdrop extends Entity
 	{
 		public var backdrop:Backdrop;
+		public var clickMask:ClickMask;
 		public var sound:Sfx;
 		
 		
@@ -21,9 +22,10 @@ package
 		public var fadeInComplete:Boolean = false;
 		public var fadeTween:ColorTween;		
 		
-		public function PhotoBackdrop(backdropSource:* = null, soundSource:* = null, fadeInDuration:Number = 3, fadeOutDuration:Number = 3) 
+		public function PhotoBackdrop(backdropSource:* = null, soundSource:* = null, fadeInDuration:Number = 3, fadeOutDuration:Number = 3, clickMaskSource:* = null) 
 		{
 			backdrop = new Backdrop(backdropSource);
+			if (clickMaskSource) clickMask = new ClickMask(0, 0, clickMaskSource);
 			if (soundSource) sound = new Sfx(soundSource);
 			super(0, 0, backdrop);
 			this.fadeInDuration = fadeInDuration;
@@ -33,6 +35,7 @@ package
 		
 		override public function added():void
 		{
+			if (clickMask) FP.world.add(clickMask);
 			if (fadeInDuration > 0)
 			{
 				backdrop.alpha = 0;
@@ -51,6 +54,12 @@ package
 			if (backdrop) backdrop.alpha = fadeTween.alpha;
 			super.update();
 		}		
+		
+		//override public function render():void
+		//{
+			//super.render();
+			//if (clickMask) clickMask.render(FP.buffer, FP.point, FP.camera);
+		//}
 		
 		public function fadeIn():void
 		{
@@ -82,6 +91,7 @@ package
 		
 		public function destroy():void
 		{
+			if (this.clickMask) FP.world.remove(this.clickMask);
 			FP.world.remove(this);
 		}		
 		

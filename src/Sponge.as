@@ -59,7 +59,7 @@ package
 			
 			if (Input.mouseDown && Global.hasSponge) 
 			{
-				if (collideWith(Global.dust, x, y))
+				if (collideWith(Global.dust, x, y) && !Global.dust.cleaned)
 				{			
 					Global.dust.clean(x, y);
 					saturation /= 1.01;

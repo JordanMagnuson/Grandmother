@@ -54,6 +54,23 @@ package
 		[Embed(source = '../assets/leaving13.jpg')] public static const LEAVING_13:Class;
 		[Embed(source = '../assets/leaving15.jpg')] public static const LEAVING_15:Class;
 		
+		// Masks
+		[Embed(source = '../assets/click_mask01.png')] public static const CLICK_MASK_01:Class;
+		[Embed(source = '../assets/click_mask02.png')] public static const CLICK_MASK_02:Class;
+		[Embed(source = '../assets/click_mask03.png')] public static const CLICK_MASK_03:Class;
+		[Embed(source = '../assets/click_mask04.png')] public static const CLICK_MASK_04:Class;
+		[Embed(source = '../assets/click_mask05.png')] public static const CLICK_MASK_05:Class;
+		[Embed(source = '../assets/click_mask06.png')] public static const CLICK_MASK_06:Class;
+		[Embed(source = '../assets/click_mask07.png')] public static const CLICK_MASK_07:Class;
+		[Embed(source = '../assets/click_mask08.png')] public static const CLICK_MASK_08:Class;
+		[Embed(source = '../assets/click_mask09.png')] public static const CLICK_MASK_09:Class;
+		[Embed(source = '../assets/click_mask10.png')] public static const CLICK_MASK_10:Class;
+		[Embed(source = '../assets/click_mask11.png')] public static const CLICK_MASK_11:Class;
+		[Embed(source = '../assets/click_mask12.png')] public static const CLICK_MASK_12:Class;
+		[Embed(source = '../assets/click_mask13.png')] public static const CLICK_MASK_13:Class;
+		[Embed(source = '../assets/click_mask14.png')] public static const CLICK_MASK_14:Class;
+		[Embed(source = '../assets/click_mask15.png')] public static const CLICK_MASK_15:Class;
+		
 		
 		
 		/**
