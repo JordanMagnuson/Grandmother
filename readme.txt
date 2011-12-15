@@ -28,7 +28,7 @@ All photos were taken by myself, Jordan Magnuson, in Nha Trang, Vietnam,
 during 2011. 
 
 The sounds are all used with permission, under creative commons licenses.
-They can be found along with their creator and via their unique id's at
+They can be found along with their creators via their unique id's at
 freesound.org. The filenames are as follows:
 
 45660_bucket_splash.mp3
@@ -57,6 +57,7 @@ SPECIAL THANKS
 
 To everyone who helped me test and refine this creation, including:
 Simon Braunstein
+Jed Davis
 Matthew Fisher
 Stephen "increpare" Lavelle
 Karith Magnuson
