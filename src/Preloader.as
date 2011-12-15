@@ -53,15 +53,15 @@ package
 			// show loader
 			addChild(square);
 			square.x = (stage.stageWidth / 2) -((size-8)/2);
-			square.y = stage.stageHeight / 2 + 40;
+			square.y = stage.stageHeight / 2 + 20;
 			
 			addChild(border);
 			border.x = (stage.stageWidth / 2) - (size/2);
-			border.y = stage.stageHeight / 2 - 4 + 40;
+			border.y = stage.stageHeight / 2 - 4 + 20;
 		
 			addChild(text);
 			text.x = (stage.stageWidth / 2) - (size/2);
-			text.y = stage.stageHeight / 2 - 30 + 40;
+			text.y = stage.stageHeight / 2 - 30 + 20;
 	
 		}
 		
@@ -92,7 +92,7 @@ package
 				{
 					addChild(clickSprite);
 					clickSprite.x = (stage.stageWidth / 2) - clickSprite.width / 2;
-					clickSprite.y = 350;
+					clickSprite.y = 330;
 					stage.addEventListener(MouseEvent.CLICK, clickStartup);
 				}
 				else

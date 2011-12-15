@@ -59,13 +59,13 @@ package
 			
 			if (Input.mouseDown && Global.hasSponge) 
 			{
-				if (collideWith(Global.dust, x, y) && !Global.dust.cleaned)
+				if (collideWith(Global.dust, x, y))
 				{			
 					Global.dust.clean(x, y);
-					saturation /= 1.01;
+					if (!Global.dust.cleaned) saturation /= 1.01;
 					
 					//if (FP.rand(100) <= 1 && !SndSponge01.playing)
-					if (Input.mousePressed && Global.sponge.saturation > Global.MIN_SPONGE_SATURATION)
+					if (!Global.dust.cleaned && Input.mousePressed && Global.sponge.saturation > Global.MIN_SPONGE_SATURATION)
 						SndSponge01.play();
 				}
 

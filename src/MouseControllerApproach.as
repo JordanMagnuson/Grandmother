@@ -20,6 +20,8 @@ package
 		public function MouseControllerApproach() 
 		{
 			feetIcon.centerOO();
+			magnifyingIcon.centerOO();
+			cursorIcon.centerOO();
 			type = 'mouse_controller';
 			layer = -1000;	
 			setHitbox(1, 1, 0, 0);
